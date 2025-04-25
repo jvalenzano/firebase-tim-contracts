@@ -1,0 +1,9 @@
+# Node, Firebase, MacOS artifacts
+node_modules/
+firebase-debug.log
+firebase-debug.*
+firestore.indexes.json
+firestore.rules
+*.env
+.DS_Store
+google-services.json
