@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow authenticated users to read everything
+    match /{document=**} {
+      allow read: if request.auth != null;
+    }
+
+    // Specific control over gates
+    match /timber_sales/{saleId} {
+      allow read: if request.auth != null;
+
+      match /gate1_plan {
+        allow update: if request.auth.token.role in ['contract_preparer', 'data_admin'];
+      }
+      match /gate2_design {
+        allow update: if request.auth.token.role in ['contract_preparer', 'data_admin'];
+      }
+      match /gate3_prepare {
+        allow update: if request.auth.token.role == 'contract_preparer';
+      }
+      match /gate4_advertise {
+        allow update: if request.auth.token.role == 'contract_preparer';
+      }
+      match /gate5_bid {
+        allow update: if request.auth.token.role == 'contract_preparer';
+      }
+      match /gate6_award {
+        allow update: if request.auth.token.role == 'contract_agent';
+      }
+    }
+  }
+}
