@@ -1,0 +1,95 @@
+{
+  "collection": "timber_sales",
+  "document": "{saleId}",
+  "fields": {
+    "metadata": {
+      "projectId": "string",
+      "forest": "string",
+      "district": "string",
+      "status": "string",
+      "createdBy": "reference(users/{userId})",
+      "createdAt": "timestamp"
+    },
+    "gateStatus": {
+      "gate1": "string",
+      "gate2": "string",
+      "gate3": "string",
+      "gate4": "string",
+      "gate5": "string",
+      "gate6": "string"
+    },
+    "gate1_plan": {
+      "volumeEstimatesByYear": "map",
+      "planningNotes": "string",
+      "certificationReportLink": "string",
+      "certificationDate": "timestamp"
+    },
+    "gate2_design": {
+      "nepaDecisionDate": "timestamp",
+      "updatedVolumeEstimates": "map",
+      "certificationReport": "string"
+    },
+    "gate3_prepare": {
+      "cruiseMethod": "string",
+      "natcrsFiles": "array",
+      "cuttingUnits": "map",
+      "speciesAssignments": [
+        {
+          "species": "string",
+          "productType": "string",
+          "unit": "string"
+        }
+      ],
+      "preAppraisalAdjustments": "map",
+      "certificationDate": "timestamp",
+      "preparedBy": "reference(users/{userId})"
+    },
+    "gate4_advertise": {
+      "appraisalData": "map",
+      "specifiedFacilities": "array",
+      "roadMaintenancePlan": "map",
+      "ssfPlan": "map",
+      "kvPlan": "map",
+      "brushDisposalPlan": "map",
+      "provisions": "array",
+      "bidDocuments": "map",
+      "preparedBy": "reference(users/{userId})",
+      "certificationDate": "timestamp"
+    },
+    "gate5_bid": {
+      "bidders": [
+        {
+          "bidderId": "string",
+          "bidAmount": "number",
+          "dateReceived": "timestamp"
+        }
+      ],
+      "bidGuarantees": "array",
+      "selectedBidder": "string",
+      "bidReport": "string",
+      "certificationDate": "timestamp"
+    },
+    "gate6_award": {
+      "awardDate": "timestamp",
+      "downpaymentBill": "string",
+      "performanceBond": "string",
+      "contractDocuments": [
+        {
+          "name": "string",
+          "type": "string",
+          "uri": "string"
+        }
+      ],
+      "awardReport": "string",
+      "preparedBy": "reference(users/{userId})"
+    },
+    "history": [
+      {
+        "action": "string",
+        "userId": "string",
+        "timestamp": "timestamp",
+        "notes": "string"
+      }
+    ]
+  }
+}
